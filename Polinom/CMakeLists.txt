@@ -13,8 +13,8 @@ set(CMAKE_CXX_STANDARD 20)
 # затем следует список инструкций для подключения проектов из подкаталогов
 include(LIBS/lib_cmake_funcs/function.cmake)    # подхватываем функции, реализованные в файле function.cmake
 
-add_subdirectory(APPS/app_Test)
-add_subdirectory(LIBS/lib_Test)
+add_subdirectory(APPS/app_Polinom)
+add_subdirectory(LIBS/lib_For_Polinom)
 
 
 

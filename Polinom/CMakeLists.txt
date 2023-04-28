@@ -15,6 +15,8 @@ include(LIBS/lib_cmake_funcs/function.cmake)    # подхватываем фу�
 
 add_subdirectory(APPS/app_Polinom)
 add_subdirectory(LIBS/lib_For_Polinom)
+add_subdirectory(LIBS/lib_interface)
+add_subdirectory(LIBS/lib_table_array)
 
 
 

@@ -1,4 +1,4 @@
-#ifndef INCLUDE_ARRAY_TABLE_H_
+п»ї#ifndef INCLUDE_ARRAY_TABLE_H_
 #define INCLUDE_ARRAY_TABLE_H_
 #include <iostream>
 #include <string>
@@ -15,48 +15,48 @@ public:
 	int table_size;
 	int count_element;
 
-	ArrayTable() {			// конструктор по умолчанию
+	ArrayTable() {			// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 		table_size = DEFAULT_SIZE;
 		count_element = 0;
 		keys = new string[table_size];
 		values = new T[table_size];
 	}
-	ArrayTable(int size) {    // конструктор инициализации
+	ArrayTable(int size) {    // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё
 		if (size > MAX_SIZE) {
-			throw logic_error("Размер больше максимально допустимого размера таблицы!");
+			throw logic_error("Р Р°Р·РјРµСЂ Р±РѕР»СЊС€Рµ РјР°РєСЃРёРјР°Р»СЊРЅРѕ РґРѕРїСѓСЃС‚РёРјРѕРіРѕ СЂР°Р·РјРµСЂР° С‚Р°Р±Р»РёС†С‹!");
 		}
 		if (size < MIN_SIZE) {
-			throw logic_error("Размер меньше минимально допустимого размера таблицы!");
+			throw logic_error("Р Р°Р·РјРµСЂ РјРµРЅСЊС€Рµ РјРёРЅРёРјР°Р»СЊРЅРѕ РґРѕРїСѓСЃС‚РёРјРѕРіРѕ СЂР°Р·РјРµСЂР° С‚Р°Р±Р»РёС†С‹!");
 		}
 		table_size = size;
 		count_element = 0;
 		keys = new string[table_size];
 		values = new T[table_size];
 	}
-	void writing_to_the_table(string key, int index, T thing) {		// метод записи в таблицу
+	void writing_to_the_table(string key, int index, T thing) {		// РјРµС‚РѕРґ Р·Р°РїРёСЃРё РІ С‚Р°Р±Р»РёС†Сѓ
 		keys[index] = key;
 		values[index] = thing;
 	}
-	void insert(string key, T thing) override { // метод добавления/обновления элемента в таблицу
-		if (full())		// проверка таблицы на полноту, можно ли добавить элемент
+	void insert(string key, T thing) override { // РјРµС‚РѕРґ РґРѕР±Р°РІР»РµРЅРёСЏ/РѕР±РЅРѕРІР»РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° РІ С‚Р°Р±Р»РёС†Сѓ
+		if (full())		// РїСЂРѕРІРµСЂРєР° С‚Р°Р±Р»РёС†С‹ РЅР° РїРѕР»РЅРѕС‚Сѓ, РјРѕР¶РЅРѕ Р»Рё РґРѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚
 		{
-			throw logic_error("Таблица переполнена!"); 
+			throw logic_error("РўР°Р±Р»РёС†Р° РїРµСЂРµРїРѕР»РЅРµРЅР°!"); 
 		}
 		int index = find_index(key);
-		if (index == INVALID) {   // если элемента еще нет в таблице
+		if (index == INVALID) {   // РµСЃР»Рё СЌР»РµРјРµРЅС‚Р° РµС‰Рµ РЅРµС‚ РІ С‚Р°Р±Р»РёС†Рµ
 			index = count_element;
 			count_element++;
 		}
-		writing_to_the_table(key, index, thing); // запись
+		writing_to_the_table(key, index, thing); // Р·Р°РїРёСЃСЊ
 	}
 	void remove(string key) override {
-		if (empty())		// проверка на пустату таблицы
+		if (empty())		// РїСЂРѕРІРµСЂРєР° РЅР° РїСѓСЃС‚Р°С‚Сѓ С‚Р°Р±Р»РёС†С‹
 		{
-			throw logic_error("Таблица пуста!");
+			throw logic_error("РўР°Р±Р»РёС†Р° РїСѓСЃС‚Р°!");
 		}
 		int index = find_index(key);
 		if (index == INVALID) {
-			throw  logic_error("Нет такого элемента!");
+			throw  logic_error("РќРµС‚ С‚Р°РєРѕРіРѕ СЌР»РµРјРµРЅС‚Р°!");
 		}
 		for (int i = index; i < count_element - 1; i++)
 		{
@@ -65,13 +65,13 @@ public:
 		}
 		count_element--;
 	}
-	int size() override {       // метод возвращения количества записаных элементов
+	int size() override {       // РјРµС‚РѕРґ РІРѕР·РІСЂР°С‰РµРЅРёСЏ РєРѕР»РёС‡РµСЃС‚РІР° Р·Р°РїРёСЃР°РЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ
 		return count_element;
 	}
-	int buffer_size() {        // метод возвращающий максимальный размер таблицы
+	int buffer_size() {        // РјРµС‚РѕРґ РІРѕР·РІСЂР°С‰Р°СЋС‰РёР№ РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ С‚Р°Р±Р»РёС†С‹
 		return table_size;
 	}
-	int find_index(string key) override {   // поиск индекса элемента по ключу
+	int find_index(string key) override {   // РїРѕРёСЃРє РёРЅРґРµРєСЃР° СЌР»РµРјРµРЅС‚Р° РїРѕ РєР»СЋС‡Сѓ
 		for (int i = 0; i < count_element; i++)
 		{
 			if (key == keys[i]) {
@@ -80,16 +80,16 @@ public:
 		}
 		return INVALID;
 	}
-	T get_by_id(int index) override {   // метод возвращает индекс элемента
+	T get_by_id(int index) override {   // РјРµС‚РѕРґ РІРѕР·РІСЂР°С‰Р°РµС‚ РёРЅРґРµРєСЃ СЌР»РµРјРµРЅС‚Р°
 		return values[index];
 	}
-	bool full() {			// метод проверяет заполнина ли таблица
+	bool full() {			// РјРµС‚РѕРґ РїСЂРѕРІРµСЂСЏРµС‚ Р·Р°РїРѕР»РЅРёРЅР° Р»Рё С‚Р°Р±Р»РёС†Р°
 		return table_size == count_element;
 	}
-	bool empty() {			// метод проверяет пуста ли таблица
+	bool empty() {			// РјРµС‚РѕРґ РїСЂРѕРІРµСЂСЏРµС‚ РїСѓСЃС‚Р° Р»Рё С‚Р°Р±Р»РёС†Р°
 		return count_element == 0;
 	}
-	void print() override {			// метод печати ключа | элемента
+	void print() override {			// РјРµС‚РѕРґ РїРµС‡Р°С‚Рё РєР»СЋС‡Р° | СЌР»РµРјРµРЅС‚Р°
 		for (int i = 0; i < count_element; i++)
 		{
 			cout << keys[i] << " | " << values[i] << endl;

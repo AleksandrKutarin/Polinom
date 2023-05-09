@@ -17,6 +17,10 @@ add_subdirectory(APPS/app_Polinom)
 add_subdirectory(LIBS/lib_For_Polinom)
 add_subdirectory(LIBS/lib_interface)
 add_subdirectory(LIBS/lib_table_array)
+add_subdirectory(LIBS/lib_hash_table)
+add_subdirectory(LIBS/lib_list)
+add_subdirectory(LIBS/lib_list_table)
+add_subdirectory(LIBS/lib_sort_array_table)
 
 
 

@@ -21,7 +21,7 @@ public:
 
 	void writing_to_the_table(string key, int index, T thing) {    // метод записи в таблицу
 		if (index >= table_size) {
-			throw out_of_range("Specified index is out of range");
+			throw string("Specified index is out of range");
 		}
 		else {
 			pairs[index]->set_data(pair<string, T>(key, thing));
@@ -52,12 +52,12 @@ public:
 	}
 	void remove(string key) override {
 		if (isClear()) {
-			throw logic_error("Table is clear");
+			throw string("Table is clear");
 		}
 		else {
 			int idx = find_index(key);
 			if (idx == INVALID) {
-				throw out_of_range("element not found");
+				throw string("element not found");
 			}
 			else {
 				pairs.erase(idx);
@@ -73,7 +73,7 @@ public:
 	}
 	void print() override {
 		for (int i = 0; i < table_size; i++) {
-			cout << pairs[i]->get_data().first << " | " << pairs[i]->get_data().second << "\n";
+			cout << " | " << pairs[i]->get_data().first << " | " << pairs[i]->get_data().second << "\n";
 		}
 	}
 	bool isClear() {

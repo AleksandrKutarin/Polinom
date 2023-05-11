@@ -87,7 +87,7 @@ public:
 
     void print() override {
         for (int i = 0; i < table_size; i++) {
-            cout << pairs[i].key << " | " << pairs[i].value << "\n";
+            cout << " | " << pairs[i].key << " | " << pairs[i].value << "\n";
         }
     }
 

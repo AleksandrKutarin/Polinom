@@ -126,7 +126,7 @@ public:
 		for (int i = 0; i < size_table; i++) {
 			if (!list_table[i].empty()) {
 				for (auto it = list_table[i].begin(); it != list_table[i].end(); it++) {
-					cout << (*it).first << " | " << (*it).second << endl;
+					cout << " | " << (*it).first << " | " << (*it).second << endl;
 				}
 			}
 		}

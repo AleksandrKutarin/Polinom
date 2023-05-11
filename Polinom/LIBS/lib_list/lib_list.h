@@ -58,8 +58,8 @@ public:
 	}
 	// Метод - удаления с конца
 	void pop_back() {
-		if (head == tail) { throw logic_error("Head = tail"); }
-		else if (isEmpty()) { throw logic_error("List is empty"); }
+		if (head == tail) { throw string("Head = tail"); }
+		else if (isEmpty()) { throw string("List is empty"); }
 		CNode<T>* tmp = (*this)[size() - 2];
 		tmp->del_next();
 		tail = tmp;
@@ -100,7 +100,7 @@ public:
 	// Метод - вставки внутрь списка по индексу
 	void insert(T _data, int index) {
 		if (index < 0) {
-			throw out_of_range("out of range");
+			throw string("out of range");
 		}
 		if (index == 0) {
 			push_front(_data);
@@ -111,7 +111,7 @@ public:
 			return;
 		}
 		if (index >= size() - 1) {
-			throw out_of_range("out of range");
+			throw string("out of range");
 		}
 		CNode<T>* tmp = new CNode<T>(_data);
 		CNode<T>* post = (*this)[index];
@@ -122,10 +122,10 @@ public:
 	// Метод - удаления по индексу
 	void erase(int index) {
 		if (index < 0) {
-			throw out_of_range("out of range");
+			throw string("out of range");
 		}
 		if (index == 0) {
-			pop_back();
+			pop_front();
 			return;
 		}
 		if (index == size() - 1) {
@@ -133,7 +133,7 @@ public:
 			return;
 		}
 		if (index >= size() - 1) {
-			throw out_of_range("out of range");
+			throw string("out of range");
 		}
 		CNode<T>* del_elem = (*this)[index];
 		CNode<T>* pre = (*this)[index - 1];

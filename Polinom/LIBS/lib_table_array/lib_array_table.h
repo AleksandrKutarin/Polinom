@@ -23,10 +23,10 @@ public:
 	}
 	ArrayTable(int size) {    // конструктор инициализации
 		if (size > MAX_SIZE) {
-			throw logic_error("Размер больше максимально допустимого размера таблицы!");
+			throw string("Размер больше максимально допустимого размера таблицы!");
 		}
 		if (size < MIN_SIZE) {
-			throw logic_error("Размер меньше минимально допустимого размера таблицы!");
+			throw string("Размер меньше минимально допустимого размера таблицы!");
 		}
 		table_size = size;
 		count_element = 0;
@@ -40,7 +40,7 @@ public:
 	void insert(string key, T thing) override { // метод добавления/обновления элемента в таблицу
 		if (full())		// проверка таблицы на полноту, можно ли добавить элемент
 		{
-			throw logic_error("Таблица переполнена!"); 
+			throw string("Таблица переполнена!");
 		}
 		int index = find_index(key);
 		if (index == INVALID) {   // если элемента еще нет в таблице
@@ -52,11 +52,11 @@ public:
 	void remove(string key) override {
 		if (empty())		// проверка на пустату таблицы
 		{
-			throw logic_error("Таблица пуста!");
+			throw string("Таблица пуста!");
 		}
 		int index = find_index(key);
 		if (index == INVALID) {
-			throw  logic_error("Нет такого элемента!");
+			throw  string("Нет такого элемента!");
 		}
 		for (int i = index; i < count_element - 1; i++)
 		{
@@ -92,7 +92,7 @@ public:
 	void print() override {			// метод печати ключа | элемента
 		for (int i = 0; i < count_element; i++)
 		{
-			cout << keys[i] << " | " << values[i] << endl;
+			cout << " | " << keys[i] << " | " << values[i] << endl;
 		}
 		
 	}
